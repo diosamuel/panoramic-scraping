@@ -60,11 +60,12 @@ if __name__ == "__main__":
     file = 'Result.html'
     zoom_start = 12
 
-    ### CONFIGURATION
-    center = (50.7734, 14.2080) # Center of area
-    radius = 3 # Radius in kilometres
-    resolution = 500 # How many dummy points are searched, lower makes it faster, but some panoramas will be missed
-
+    ## Read configuration from yaml file
+    with open('config.yaml') as f:
+        config = yaml.safe_load(f)
+        center = config['center']
+        radius = config['radius']
+        resolution = config['resolution']
 
     top_left = (center[0]-radius/70, center[1]+radius/70)
     bottom_right = (center[0]+radius/70, center[1]-radius/70)

@@ -5,7 +5,8 @@ import itertools
 import traceback
 import webbrowser
 from pprint import pprint
-
+import os
+import yaml
 import aiohttp
 import folium
 
@@ -21,6 +22,8 @@ async def get_panoid(lat, lon, session):
             text = await resp.text()
             panoids = streetview.panoids_from_response(text)
             all_panoids.extend(panoids)
+            os.system('cls')
+            print(f'Panoid Count: {len(all_panoids)}')
     except:
         print('timeout')
         await asyncio.sleep(10)

@@ -21,3 +21,6 @@ The module is built upon and modifies streetview module - https://github.com/rob
 <img width="100%" alt="Drag the layout file to OBS" src="https://i.imgur.com/MDsnjX3.jpg">
 
 4. Running `3_project_panoramas.py` will project the panoramas into cubical projections with front, back, left and right views as separate images in a `cube_pano/` directory.
+
+Tanjungkarang 1000 points
+https://drive.google.com/drive/folders/1k-TSExEWvxYj2BUucD1ZQtq9LlLKNG4P?usp=sharing

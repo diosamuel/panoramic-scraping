@@ -39,6 +39,7 @@ async def download_panorama(panoid,
         os.makedirs(pano_directory)
 
     try:
+        print(panoid)
         x = streetview.tiles_info(panoid['panoid'])
         await download_tiles_async(x, tile_diretory, session)
         streetview.stich_tiles(panoid['panoid'],
@@ -75,14 +76,14 @@ async def download_loop(panoids, pmax):
 if __name__ == "__main__":
 
     # Load panoids info
-    if not glob.glob('panoids*.json'):
-        print('No panoids file found')
-        exit()
-    elif len(glob.glob('panoids*.json')) > 1:
-        print('Multiple panoids files found. Please remove files not needed')
-        exit()
+    # if not glob.glob('panoids*.json'):
+    #     print('No panoids file found')
+    #     exit()
+    # elif len(glob.glob('panoids*.json')) > 1:
+    #     print('Multiple panoids files found. Please remove files not needed')
+    #     exit()
 
-    with open(glob.glob('panoids*.json')[0], 'r') as f:
+    with open('panoids.json', 'r') as f:
         panoids = json.load(f)
 
     print(f"Loaded {len(panoids)} panoids")

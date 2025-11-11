@@ -1,9 +1,9 @@
 ## IMAGE DOWNLOAD SETTINGS
 
 # Center of area to search for panoramas
-center: [50.7734, 14.2080]
+center: [-5.417801608011945, 105.25823449068889]
 # Radius in kilometres
-radius: 3
+radius: 1
 # How many dummy points are searched, lower makes it faster, but some panoramas will be missed
 resolution: 500
 

@@ -10,7 +10,8 @@ The module is built upon and modifies streetview module - https://github.com/rob
 
 1. Install required modules: `pip install -r requirements.txt`
 2. Change center, radius, resolution to your liking in `config.yaml`.
-3. Running `1_get_panoid_info.py` will save data for panoramas and generate a map of panorama locations.
+3. Running `1_get_panoid_info.py` will save data for panoramas
+3a. Running maps.py to generate a map of panorama locations.
 
 <img width="100%" alt="Drag the layout file to OBS" src="https://i.imgur.com/DzjSq7a.png">
 

@@ -12,7 +12,8 @@ import folium
 
 import streetview
 
-
+already_in = set()
+new_all_panoids = list()
 async def get_panoid(lat, lon, session):
     """ Get data about panoids asynchronously """
     try:
@@ -20,12 +21,21 @@ async def get_panoid(lat, lon, session):
         async with session.get(url) as resp:
             assert resp.status == 200
             text = await resp.text()
-            panoids = streetview.panoids_from_response(text)
-            all_panoids.extend(panoids)
-            os.system('cls')
-            print(f'Panoid Count: {len(all_panoids)}')
-    except:
-        print('timeout')
+            panoids = streetview.panoids_from_response(text,disp=True)
+
+            for pan in panoids:
+                if not pan['panoid'] in already_in:
+                    already_in.add(pan['panoid'])
+                    new_all_panoids.append(pan)
+
+            with open(f'panoids.json','w') as f:
+                json.dump(new_all_panoids, f, indent=2)
+
+            os.system('clear')
+            print(f'Panoid Count: {len(new_all_panoids)}')
+            return new_all_panoids
+    except Exception as e:
+        print(type(e).__name__)
         await asyncio.sleep(10)
         await get_panoid(lat, lon, session)
 
@@ -102,12 +112,12 @@ if __name__ == "__main__":
     # Filter out duplicates
     print(f'Pre-filtering: {len(all_panoids)} panoramas')
     
-    already_in = set()
-    new_all_panoids = list()
-    for pan in all_panoids:
-        if not pan['panoid'] in already_in:
-            already_in.add(pan['panoid'])
-            new_all_panoids.append(pan)
+    # already_in = set()
+    # new_all_panoids = list()
+    # for pan in all_panoids:
+    #     if not pan['panoid'] in already_in:
+    #         already_in.add(pan['panoid'])
+    #         new_all_panoids.append(pan)
 
     print(f'Post-filtering: {len(new_all_panoids)} panoramas')
 

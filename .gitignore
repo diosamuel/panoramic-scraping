@@ -1,6 +1,6 @@
 __pycache__/
 venv/
-panoids*.json
+# panoids*.json
 Result.html
 panoramas/
 tiles/
